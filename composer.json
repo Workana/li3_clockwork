@@ -1,0 +1,24 @@
+{
+  "name": "workana/li3_clockwork",
+  "type": "lithium-library",
+  "description": "PHP Clockwork debug meets li3.",
+  "keywords": ["clockwork", "lithium"],
+  "homepage": "https://github.com/workana/li3_clockwork",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Fede Isas",
+      "email": "federico@workana.com"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "li3_clockwork" : ""
+    }
+  },
+  "require": {
+    "php": ">=5.3.2",
+    "itsgoingd/clockwork": "1.8",
+    "composer/installers": "*"
+  }
+}
