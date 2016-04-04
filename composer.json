@@ -12,8 +12,8 @@
     }
   ],
   "autoload": {
-    "psr-0": {
-      "li3_clockwork" : ""
+    "psr-4": {
+      "li3_clockwork\\" : ""
     }
   },
   "require": {
