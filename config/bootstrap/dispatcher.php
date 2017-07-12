@@ -3,10 +3,11 @@ use Clockwork\Clockwork;
 use li3_clockwork\extensions\StaticClockwork;
 use lithium\action\Dispatcher;
 use lithium\action\Controller;
+use lithium\aop\Filters;
 
 StaticClockwork::getInstance()->getTimeline()->startEvent('li3_clockwork_has_route', 'The routing has completed.');
 
-Dispatcher::applyFilter('_callable', function ($self, $params, $chain) {
+Filters::apply(Dispatcher::class, '_callable', function ($self, $params, $chain) {
     // At this point, the routing has completed. In order to call _callable, it's routed.
     // So this is ever so slightly off actually.
     StaticClockwork::getInstance()->getTimeline()->endEvent('li3_clockwork_has_route');
@@ -40,7 +41,7 @@ Dispatcher::applyFilter('_callable', function ($self, $params, $chain) {
     return $result;
 });
 
-Dispatcher::applyFilter('_call', function ($self, $params, $chain) {
+Filters::apply(Dispatcher::class, '_call', function($self, $params, $chain) {
 
     StaticClockwork::getInstance()->getTimeline()->startEvent('li3_clockwork_end_call', 'The controller action has been called and now a response will be returned.');
 
@@ -56,7 +57,7 @@ Dispatcher::applyFilter('_call', function ($self, $params, $chain) {
     return $result;
 });
 
-Dispatcher::applyFilter('run', function ($self, $params, $chain) {
+Filters::apply(Dispatcher::class, 'run', function($self, $params, $chain) {
     if (stripos($params['request']->url, '__clockwork')) {
         return $chain->next($self, $params, $chain);
     }
