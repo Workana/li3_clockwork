@@ -18,7 +18,7 @@
   },
   "require": {
     "php": ">=5.3.2",
-    "itsgoingd/clockwork": "1.8",
+    "itsgoingd/clockwork": "4.1.7",
     "composer/installers": "*"
   }
 }
